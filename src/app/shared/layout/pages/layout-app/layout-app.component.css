@@ -1,0 +1,36 @@
+
+
+.vertical_navbar ul{
+    width: 100%;
+    font-family: poppins;
+    font-weight: 300;
+}
+  .vertical_navbar{
+    min-width: 700px
+  }
+
+.vertical_navbar ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    background-color: #0c2840;
+  }
+
+  .vertical_navbar li a mat-icon {
+    vertical-align: middle;
+    margin-right: 4px;
+}
+  
+  .vertical_navbar li a {
+    display: block;
+    font-size: 17px;
+    color: whitesmoke;
+    padding: 25px 16px;
+    text-decoration: none;
+    flex: 1;
+    white-space: nowrap;
+  }
+  
+  .vertical_navbar li a:hover {
+   background-color:#E94560;
+  }

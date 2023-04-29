@@ -1,0 +1,11 @@
+.dashboard_banner{
+    /* background-image: url('../../../../../assets//dashboard_welcome.jpg'); */
+    height: 40px;
+}
+
+.banner_text{
+    margin-left: 33px;
+    font-family: poppins;
+    margin-top: 4px;
+    font-size: 20px;
+}

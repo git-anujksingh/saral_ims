@@ -1,0 +1,13 @@
+<div class="vertical_navbar" style="width: auto">
+    <div style="float: left;height: 91vh; background-color:#0c2840; border: 0.5px solid white; transition: 0.5s; display: inline; min-width: fit-content;" [style.width]="layout_width">
+        <ul>
+            <li><a><mat-icon matTooltip="Dashboard">dashboard</mat-icon>{{isSlideBarVisible? "Dashboard": ''}}</a></li>
+            <li><a><mat-icon matTooltip="Masters">library_books</mat-icon>{{isSlideBarVisible ? "Masters": ''}}</a></li>
+            <li><a><mat-icon matTooltip="Transactions">find_replace</mat-icon>{{isSlideBarVisible ? "Transactions": ''}}</a></li>
+            <li><a><mat-icon matTooltip="Reports">receipt</mat-icon>{{isSlideBarVisible ? "Reports": ''}}</a></li>
+            <li><a><mat-icon matTooltip="Utilities">view_carousel</mat-icon>{{isSlideBarVisible ? "Utilities" : ''}}</a></li>
+            <li><a><mat-icon matTooltip="Support"> live_help</mat-icon>{{isSlideBarVisible ? "Support" : ''}}</a></li>
+        </ul>
+    </div>
+    <router-outlet></router-outlet>
+</div>
