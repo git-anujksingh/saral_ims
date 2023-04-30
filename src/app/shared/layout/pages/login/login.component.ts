@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Login } from './shared/loginClass';
 import { Router } from '@angular/router';
+import { LoginService } from './login.service';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -12,12 +13,12 @@ export class LoginComponent implements OnInit {
   loginObject : Login[]=[];
   type = "password";
   icon ="visibility_off"
-  constructor(private fb : FormBuilder, private router : Router){}
+  constructor(private fb : FormBuilder, private router : Router, private loginService : LoginService){}
   ngOnInit() {
     let loggedIn = true;
     if(loggedIn){
       let res={
-        email: "info@saral.com",
+        userName: "info@saral.com",
         password : "123@saral",
         rememberMe : true
       }
@@ -29,7 +30,7 @@ export class LoginComponent implements OnInit {
 
   buildLoginForm(login: Login) {
     this.loginForm = this.fb.group({
-      email: [login.email, Validators.required],
+      userName: [login.userName, Validators.required],
       password: [login.password, Validators.required],
       rememberMe: true
     });
@@ -37,7 +38,7 @@ export class LoginComponent implements OnInit {
 
   extractLoginForm() : Login{
     const data : Login = {
-      email : this.loginForm.value.email,
+      userName : this.loginForm.value.userName,
       password : this.loginForm.value.password,
       rememberMe : this.loginForm.value.rememberMe
     }
@@ -46,8 +47,14 @@ export class LoginComponent implements OnInit {
 
   submitLogin(){
     const credentials = this.extractLoginForm();
-    console.log(credentials);
-    this.router.navigate(['/masters']);
+
+    this.loginService.getLogin(credentials).subscribe((res)=>{
+        console.log(res);
+        if(res.success){
+          this.router.navigate(['/dashboard']);
+        }
+    })
+    // this.router.navigate(['/masters']);
   }
 
 eyeView(){

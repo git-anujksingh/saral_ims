@@ -1,5 +1,5 @@
 export class Login{
-    email: string ="";
+    userName: string ="";
     password: string ="";
     rememberMe : boolean = false
 }

@@ -15,7 +15,6 @@ export class LayoutAppComponent implements OnInit {
 
   ngOnInit() {
     this.commonService.isSlideBarVisible.subscribe((x)=>{
-      debugger;
       if(x == false){
         this.layout_width = "3.9%";
         this.isSlideBarVisible = false;
