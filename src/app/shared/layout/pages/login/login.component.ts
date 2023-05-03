@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Login } from './shared/loginClass';
 import { Router } from '@angular/router';
 import { LoginService } from './login.service';
+import { GlobalService } from 'src/app/common/globalService';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -13,7 +14,7 @@ export class LoginComponent implements OnInit {
   loginObject : Login[]=[];
   type = "password";
   icon ="visibility_off"
-  constructor(private fb : FormBuilder, private router : Router, private loginService : LoginService){}
+  constructor(private fb : FormBuilder, private router : Router, private loginService : LoginService, private globalService : GlobalService){}
   ngOnInit() {
     let loggedIn = true;
     if(loggedIn){
@@ -51,6 +52,7 @@ export class LoginComponent implements OnInit {
     this.loginService.getLogin(credentials).subscribe((res)=>{
         console.log(res);
         if(res.success){
+          this.globalService.saveLogin(res.data);
           this.router.navigate(['/dashboard']);
         }
     })
