@@ -1,12 +1,13 @@
 import { DatePipe } from '@angular/common';
 import { Injectable } from '@angular/core';
+import { Collection } from './collection';
 
 @Injectable({
   providedIn: 'root'
 })
 export class GlobalService {
 
-  constructor(public datepipe: DatePipe){}
+  constructor(public datepipe: DatePipe, public collection : Collection){}
   loginInfo= {};
 
 
@@ -16,7 +17,6 @@ saveLogin(data: any){
 
 
 getWelcomeZone(){
-  debugger;
   let welcomeData ={};
   var datePipe = new DatePipe("en-US");
   //let todays_date  = datePipe.transform(new Date(), 'dd/MM/yyyy');
@@ -39,7 +39,7 @@ getWelcomeZone(){
     //time : current_time,
     welcomeNote : welcomeNote
   }
-  return welcomeData;  
+  return welcomeData; 
 
 }
 }

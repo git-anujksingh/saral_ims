@@ -1,18 +1,79 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, HostListener, OnDestroy, OnInit } from '@angular/core';
 import { CommonServiceService } from './common/common-module/common-service.service';
+import { NavigationStart, Router } from '@angular/router';
+import { GlobalService } from './common/globalService';
+import { Collection } from './common/collection';
+import { LoginService } from './shared/layout/pages/login/login.service';
+import { Subscription } from 'rxjs';
+export let browserRefresh = false;
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
   title = 'saral_ims';
-  constructor(public commonService : CommonServiceService){}
+  public userLastLogin : any;
+  subscription : Subscription;
+  constructor(public commonService : CommonServiceService, public router : Router, public globalService : GlobalService, public collection : Collection, public loginService : LoginService){
+    this.userLastLogin = this.collection.localSessionData.last_login;
+  }
+  ngOnInit(){
+    if(this.collection.localSessionData){
+      this.router.navigate(['/dashboard']);
+    } else {
+      this.router.navigate(['/login']);
+    }
+  }
 
     h_navigation(){
       this.commonService.slideBarStream();
   }
+
+  @HostListener('window:mousemove', [ '$event' ])
+    isTokenExist($event: Event){
+      if(!localStorage.getItem('localStorage')){
+        this.router.navigate(["/login"]);
+      }
+    }
+
+    // @HostListener('window:beforeunload', [ '$event' ])
+    // isUserLogged($event: Event){
+    //   //localStorage.removeItem('localStorage');
+    //   this.subscription = this.router.events.subscribe((event) => {
+    //     if (event instanceof NavigationStart) {
+    //       browserRefresh = !this.router.navigated;
+    //       if(browserRefresh){
+    //         this.router.navigate(["/login"]);
+    //       }
+    //     }
+    //   });
+    // }
+
+    logOff(){
+      this.loginService.logOut(this.collection.localSessionData.loginId).subscribe((res)=>{
+        if(res.success){
+          this.router.navigate(['/login']);
+        }
+
+      })
+    }
+
+    @HostListener('window:unload', ['$event'])
+      unloadHandler($event: Event) {
+      this.PostCall();
+}
+  PostCall() {
+    throw new Error('Method not implemented.');
+  }
+
+    @HostListener('window:beforeunload', ['$event'])
+      beforeUnloadHander($event: Event) {
+        this.ngOnInit();
+      return false;
+}
+
 
 
 }

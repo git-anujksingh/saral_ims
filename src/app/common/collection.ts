@@ -9,6 +9,14 @@ export class Collection {
         "logger": "c_loger"
     }
 
+    // public localSessionData ={
+    //   last_login:"",
+    //   userId : "",
+    //   token :""
+    // }
+
+    public localSessionData : any ={};
+
     
 
 
