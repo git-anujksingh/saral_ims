@@ -3,6 +3,8 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Login } from './shared/loginClass';
 import { Router } from '@angular/router';
 import { LoginService } from './login.service';
+import { GlobalService } from 'src/app/common/globalService';
+import { Collection } from 'src/app/common/collection';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -13,7 +15,7 @@ export class LoginComponent implements OnInit {
   loginObject : Login[]=[];
   type = "password";
   icon ="visibility_off"
-  constructor(private fb : FormBuilder, private router : Router, private loginService : LoginService){}
+  constructor(private fb : FormBuilder, private router : Router, private loginService : LoginService, private globalService : GlobalService, private collection : Collection){}
   ngOnInit() {
     let loggedIn = true;
     if(loggedIn){
@@ -51,10 +53,17 @@ export class LoginComponent implements OnInit {
     this.loginService.getLogin(credentials).subscribe((res)=>{
         console.log(res);
         if(res.success){
+          this.globalService.saveLogin(res.data);
+          localStorage.setItem('localStorage', JSON.stringify({
+            'token': res.data.token,
+            'loginId': res.data.userName,
+            "last_login": res.data.last_login
+          }));
+          let tempLocalStorage: any = localStorage.getItem('localStorage');
+          this.collection.localSessionData = JSON.parse(tempLocalStorage);
           this.router.navigate(['/dashboard']);
         }
     })
-    // this.router.navigate(['/masters']);
   }
 
 eyeView(){
@@ -65,6 +74,10 @@ eyeView(){
     this.type = 'password';
     this.icon = 'visibility-off'
   }
+}
+
+forgetPassword(){
+  this.router.navigate(['/masters']);
 }
 
 }
