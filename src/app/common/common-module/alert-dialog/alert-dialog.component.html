@@ -1,0 +1,21 @@
+<div class="section section-sm my-0 body-pattern">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-11">
+                <div class="card border-0 mat-elevation-z3">
+                    <div class="card-header bg-white" style="padding: 10px;">
+                        <p style="font-family: 'Cambria'">{{this.alertDialogData.labelText}}</p>
+                        <div class="mt-3">
+                            <button mat-raised-button color="primary" style="margin: 5px 10px" (click)="goToDashboard()">
+                                OK
+                            </button>
+                            <button mat-raised-button color="warn" style="margin: 5px 10px" (click)="goToLogin()">
+                                Close
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -20,11 +20,12 @@ export class AppComponent implements OnInit {
     this.userLastLogin = this.collection.localSessionData.last_login;
   }
   ngOnInit(){
-    if(this.collection.localSessionData){
-      this.router.navigate(['/dashboard']);
-    } else {
-      this.router.navigate(['/login']);
-    }
+    // if(this.collection.localSessionData){
+    //   this.router.navigate(['/dashboard']);
+    // } else {
+    //   this.router.navigate(['/login']);
+    // }
+    this.router.navigate(['/login']);
   }
 
     h_navigation(){
@@ -38,35 +39,24 @@ export class AppComponent implements OnInit {
       }
     }
 
-    // @HostListener('window:beforeunload', [ '$event' ])
-    // isUserLogged($event: Event){
-    //   //localStorage.removeItem('localStorage');
-    //   this.subscription = this.router.events.subscribe((event) => {
-    //     if (event instanceof NavigationStart) {
-    //       browserRefresh = !this.router.navigated;
-    //       if(browserRefresh){
-    //         this.router.navigate(["/login"]);
-    //       }
-    //     }
-    //   });
-    // }
-
     logOff(){
-      this.loginService.logOut(this.collection.localSessionData.loginId).subscribe((res)=>{
+      this.loginService.logOut({userId :this.collection.localSessionData.loginId}).subscribe((res)=>{
         if(res.success){
+          localStorage.removeItem('localStorage');
+          this.collection.localSessionData = {};
           this.router.navigate(['/login']);
         }
 
       })
     }
 
-    @HostListener('window:unload', ['$event'])
-      unloadHandler($event: Event) {
-      this.PostCall();
-}
-  PostCall() {
-    throw new Error('Method not implemented.');
-  }
+//     @HostListener('window:unload', ['$event'])
+//       unloadHandler($event: Event) {
+//       this.PostCall();
+// }
+//   PostCall() {
+//     throw new Error('Method not implemented.');
+//   }
 
     @HostListener('window:beforeunload', ['$event'])
       beforeUnloadHander($event: Event) {
