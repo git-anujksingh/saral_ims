@@ -29,6 +29,6 @@ export class LoginService {
   }
 
   rendertest(userData: any): Observable<any>{
-    return this.httpClient.post<any>('/api/render',userData);
+    return this.httpClient.post('/api/authenticate/render',userData, {responseType: 'text'});
   }
 }
