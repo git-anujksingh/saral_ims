@@ -56,8 +56,8 @@ export class LoginComponent implements OnInit {
 
   submitLogin() {
     let credentials = this.extractLoginForm();
-
-    this.loginService.rendertest(credentials).subscribe((res) => {
+    
+    this.loginService.getLogin(credentials).subscribe((res) => {
       if (res.success && res.data.length > 0) {
         this.globalService.saveLogin(res.data);
         if (res.data.length > 0) {
