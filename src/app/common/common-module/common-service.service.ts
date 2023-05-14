@@ -9,6 +9,7 @@ export class CommonServiceService {
   private slideBarStreamValue = new BehaviorSubject<any>(true);
   returnType = true;
   isSlideBarVisible = this.slideBarStreamValue.asObservable();
+  public loginInfo =[];
   
 
   slideBarStream(){

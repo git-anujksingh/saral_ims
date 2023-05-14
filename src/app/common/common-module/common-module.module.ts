@@ -8,9 +8,13 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {MatIconModule} from '@angular/material/icon';
 import {MatTooltipModule} from '@angular/material/tooltip';
 import {MatCardModule} from '@angular/material/card';
+import {MatDialogModule} from '@angular/material/dialog';
+import { AlertDialogComponent } from './alert-dialog/alert-dialog.component';
 
 @NgModule({
-  declarations: [],
+  declarations: [
+    AlertDialogComponent
+  ],
   imports: [
     CommonModule,
     MatButtonModule,
@@ -21,7 +25,8 @@ import {MatCardModule} from '@angular/material/card';
     ReactiveFormsModule,
     MatIconModule,
     MatTooltipModule,
-    MatCardModule
+    MatCardModule,
+    MatDialogModule
   ],
   exports:[
     MatButtonModule,
@@ -32,7 +37,8 @@ import {MatCardModule} from '@angular/material/card';
     ReactiveFormsModule,
     MatIconModule,
     MatTooltipModule,
-    MatCardModule
+    MatCardModule,
+    MatDialogModule
   ]
 })
 export class CommonModuleModule { }

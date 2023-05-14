@@ -14,6 +14,17 @@ export class LoginService {
 
   getLogin(credentials: any): Observable<any>{
     let collection_name = this.collection.collectionArray["login"];
-    return this.httpClient.post<any>('/api/login',credentials, {headers : new HttpHeaders({'collection': collection_name})});
+    return this.httpClient.post<any>('/api/authenticate',credentials, {headers : new HttpHeaders({'collection': collection_name})});
+  }
+
+  isLogin(response: any): Observable<any>{
+    let collection_name = this.collection.collectionArray["login"];
+    debugger;
+    return this.httpClient.post<any>('/api/authenticate/isLogin', response, {headers : new HttpHeaders({'collection': collection_name})});
+  }
+
+  logOut(userData: any): Observable<any>{
+    let collection_name = this.collection.collectionArray["login"];
+    return this.httpClient.post<any>('/api/authenticate/logout',userData, {headers : new HttpHeaders({'collection': collection_name})});
   }
 }

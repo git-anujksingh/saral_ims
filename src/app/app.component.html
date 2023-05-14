@@ -1,3 +1,18 @@
-<div class="toolbar"><img (click)="h_navigation()" style="height: 55px; width: 60px" src="../assets/back_button.gif"><img style="height: 55px; width: 220px" src="../assets/logo.PNG"><div class="spacer"></div><p style="color:navy; font-family: poppins; margin-right: 20px">Last Login : April 21, 2023 [03: 32 PM]</p><div style="border-radius: 45%; border: 1px solid black; height: 47px; width: 47px; margin-right: 20px"></div>
-</div> 
+<div class="toolbar">
+    <img (click)="h_navigation()" style="height: 55px; width: 60px" src="../assets/back_button.gif">
+    <img style="height: 55px; width: 220px" src="../assets/logo.PNG">
+    <div class="spacer">
+
+    </div>
+    <p style="color:navy; font-family: poppins; margin-right: 20px">{{this.collection.localSessionData.last_login ? (this.collection.localSessionData.last_login
+        | date: 'MMM-dd-yyyy hh:mm a') : ''}}
+    </p>
+    <div *ngIf="this.collection.localSessionData.last_login" class="dropdown"><img style="border-radius: 50%; border: 0.5px solid black; height: 54px; width: 54px; margin-right: 20px;"
+        src="https://ipfs.filebase.io/ipfs/QmRa4daC5J82X2ke8CUpLhNsRDJoo4mzRDsPPojUhnjuMQ">
+        <div class="dropdown-content" style="float:right;">
+            <a href="#">Change Password <mat-icon style="float: right; font-size: 14px;">key</mat-icon></a>
+            <a (click)="logOff()">Logout<mat-icon style="float: right; font-size: 14px;">logout</mat-icon></a>
+        </div>
+    </div>
+</div>
 <router-outlet></router-outlet>
