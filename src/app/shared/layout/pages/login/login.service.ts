@@ -15,20 +15,20 @@ export class LoginService {
   getLogin(credentials: any): Observable<any>{
     let collection_name = this.collection.collectionArray["login"];
     debugger;
-    return this.httpClient.post<any>('/api/authenticate',credentials)
+    return this.httpClient.post<any>('https://saral-instance.onrender.com/api/authenticate',credentials)
   }
 
   isLogin(response: any): Observable<any>{
     let collection_name = this.collection.collectionArray["login"];
-    return this.httpClient.post<any>('/api/isLogin', response)
+    return this.httpClient.post<any>('https://saral-instance.onrender.com/api/isLogin', response)
   }
 
   logOut(userData: any): Observable<any>{
     let collection_name = this.collection.collectionArray["login"];
-    return this.httpClient.post<any>('/api/logout',userData)
+    return this.httpClient.post<any>('https://saral-instance.onrender.com/api/logout',userData)
   }
 
   rendertest(userData: any): Observable<any>{
-    return this.httpClient.post('/api/render',userData);
+    return this.httpClient.post('https://saral-instance.onrender.com/api/render',userData);
   }
 }

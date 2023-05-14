@@ -104,11 +104,11 @@ export class LoginComponent implements OnInit {
         }
       });
     } 
-    // else {
-    //   let tempLocalStorage: any = localStorage.getItem('localStorage');
-    //   this.collection.localSessionData = JSON.parse(tempLocalStorage);
-    //   this.router.navigate(['/dashboard']);
-    // }
+    else if(res.success && res.data.length > 0) {
+      let tempLocalStorage: any = localStorage.getItem('localStorage');
+      this.collection.localSessionData = JSON.parse(tempLocalStorage);
+      this.router.navigate(['/dashboard']);
+    }
   })
   }
 
