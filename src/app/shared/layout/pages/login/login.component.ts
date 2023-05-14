@@ -56,8 +56,8 @@ export class LoginComponent implements OnInit {
 
   submitLogin() {
     let credentials = this.extractLoginForm();
-
-    this.loginService.rendertest(credentials).subscribe((res) => {
+    
+    this.loginService.getLogin(credentials).subscribe((res) => {
       if (res.success && res.data.length > 0) {
         this.globalService.saveLogin(res.data);
         if (res.data.length > 0) {
@@ -89,7 +89,7 @@ export class LoginComponent implements OnInit {
           console.log("PHASE 2 :", modifiedCredentials['token']);
           this.loginService.getLogin(tempLocalStorage != null ? modifiedCredentials : credentials).subscribe((response) => {
             console.log("PHASE 3 :", response);
-            if (response.success) {
+            if (response.success && response.data.length > 0) {
               this.globalService.saveLogin(response.data[0]);
               localStorage.setItem('localStorage', JSON.stringify({
                 'token': response.data[0].token,
@@ -103,11 +103,12 @@ export class LoginComponent implements OnInit {
           })
         }
       });
-    } else {
-      let tempLocalStorage: any = localStorage.getItem('localStorage');
-      this.collection.localSessionData = JSON.parse(tempLocalStorage);
-      this.router.navigate(['/dashboard']);
-    }
+    } 
+    // else {
+    //   let tempLocalStorage: any = localStorage.getItem('localStorage');
+    //   this.collection.localSessionData = JSON.parse(tempLocalStorage);
+    //   this.router.navigate(['/dashboard']);
+    // }
   })
   }
 
