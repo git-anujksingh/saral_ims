@@ -1,4 +1,7 @@
 export const Environment ={
     production: false,
-    api:"https://saral-instance.onrender.com/"
+    api:"http://localhost:5000/"
 }
+
+
+// ng serve --configuration=local 
