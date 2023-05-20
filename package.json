@@ -5,7 +5,6 @@
     "ng": "ng",
     "start": "ng serve",
     "build": "ng build",
-    "build:proxy": "ng build",
     "watch": "ng build --watch --configuration development",
     "local": "ng test"
   },
