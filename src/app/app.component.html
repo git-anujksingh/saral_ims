@@ -4,7 +4,7 @@
     <div class="spacer">
 
     </div>
-    <p style="color:navy; font-family: poppins; margin-right: 20px">{{this.collection.localSessionData.last_login ? (this.collection.localSessionData.last_login
+    <p *ngIf="this.collection.localSessionData.last_login" style="color:navy; font-family: poppins; margin-right: 20px">Last Login : {{this.collection.localSessionData.last_login ? (this.collection.localSessionData.last_login
         | date: 'MMM-dd-yyyy hh:mm a') : ''}}
     </p>
     <div *ngIf="this.collection.localSessionData.last_login" class="dropdown"><img style="border-radius: 50%; border: 0.5px solid black; height: 54px; width: 54px; margin-right: 20px;"

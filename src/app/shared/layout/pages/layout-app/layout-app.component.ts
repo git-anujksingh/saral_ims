@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { CommonServiceService } from 'src/app/common/common-module/common-service.service';
 
 @Component({
@@ -11,7 +12,7 @@ export class LayoutAppComponent implements OnInit {
   public layout_width = "1825vw";
   public isSlideBarVisible : boolean = true;
 
-  constructor( public commonService: CommonServiceService){ }
+  constructor( public commonService: CommonServiceService, private router: Router){ }
 
   ngOnInit() {
     this.commonService.isSlideBarVisible.subscribe((x)=>{
@@ -24,5 +25,9 @@ export class LayoutAppComponent implements OnInit {
       }
     })
   
+}
+
+routeToMaster(){
+  this.router.navigate(['/masters/ppr']);
 }
 }

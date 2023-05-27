@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { MastersComponent } from './masters.component';
 import { LayoutAppComponent } from 'src/app/shared/layout/pages/layout-app/layout-app.component';
+import { MasterLayoutComponent } from './master-layout/master-layout.component';
 
 const routes: Routes = [
   {
@@ -9,13 +10,13 @@ const routes: Routes = [
     component: MastersComponent,
     children:[
       {
-        path:"user",
-        loadChildren:()=> import("./users-management/users-management.module").then((m)=> m.UsersManagementModule)
+        path:"ppr",
+        component: MasterLayoutComponent
       },
       {
-        path:"utility",
-        loadChildren:()=> import("./utility-management/utility-management.module").then((m)=> m.UtilityManagementModule)
-      }
+        path:"productCategory",
+        loadChildren:()=> import("../../features/masters/product-category/product-category.module").then((m)=> m.ProductCategoryModule)
+      },
     ]
   }
 ];

@@ -12,9 +12,13 @@ const routes: Routes = [
       {
         path:"",
         component: DashoardComponent
+      },
+      {
+      path:"masters",
+      loadChildren:()=> import("./../../features/masters/masters.module").then((m)=> m.MastersModule)
       }
     ]
-  },
+  }
 ];
 
 @NgModule({
