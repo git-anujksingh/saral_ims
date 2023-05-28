@@ -28,6 +28,6 @@ export class LayoutAppComponent implements OnInit {
 }
 
 routeToMaster(){
-  this.router.navigate(['/masters/ppr']);
+  this.router.navigate(['/masters']);
 }
 }

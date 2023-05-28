@@ -2000,7 +2000,8 @@
     .table-responsive-sm {
       display: block;
       overflow-x: auto;
-      width: 100%;
+      //width: 100%; //FCM
+      width: auto;
       -webkit-overflow-scrolling: touch;
       -ms-overflow-style: -ms-autohiding-scrollbar;
     }
@@ -2016,7 +2017,8 @@
     .table-responsive-md {
       display: block;
       overflow-x: auto;
-      width: 100%;
+      //width: 100%; //FCM
+      width: auto;
       -webkit-overflow-scrolling: touch;
       -ms-overflow-style: -ms-autohiding-scrollbar;
     }
@@ -2030,7 +2032,8 @@
     .table-responsive-lg {
       display: block;
       overflow-x: auto;
-      width: 100%;
+      //width: 100%; //FCM
+      width: auto;
       -webkit-overflow-scrolling: touch;
       -ms-overflow-style: -ms-autohiding-scrollbar;
     }
@@ -2044,7 +2047,8 @@
     .table-responsive-xl {
       display: block;
       overflow-x: auto;
-      width: 100%;
+      //width: 100%; //FCM
+      width: auto;
       -webkit-overflow-scrolling: touch;
       -ms-overflow-style: -ms-autohiding-scrollbar;
     }
@@ -2057,7 +2061,8 @@
   .table-responsive {
     display: block;
     overflow-x: auto;
-    width: 100%;
+    //width: 100%; //FCM
+    width: auto;
     border-radius: 8px;
     -webkit-overflow-scrolling: touch;
     -ms-overflow-style: -ms-autohiding-scrollbar;

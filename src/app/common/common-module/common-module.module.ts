@@ -10,6 +10,10 @@ import {MatTooltipModule} from '@angular/material/tooltip';
 import {MatCardModule} from '@angular/material/card';
 import {MatDialogModule} from '@angular/material/dialog';
 import { AlertDialogComponent } from './alert-dialog/alert-dialog.component';
+import {MatPaginatorModule} from '@angular/material/paginator';
+import {MatSortModule} from '@angular/material/sort';
+import {MatTableModule} from '@angular/material/table';
+import {MatRadioModule} from '@angular/material/radio';
 
 @NgModule({
   declarations: [
@@ -26,7 +30,11 @@ import { AlertDialogComponent } from './alert-dialog/alert-dialog.component';
     MatIconModule,
     MatTooltipModule,
     MatCardModule,
-    MatDialogModule
+    MatDialogModule,
+    MatPaginatorModule,
+    MatSortModule,
+    MatTableModule,
+    MatRadioModule
   ],
   exports:[
     MatButtonModule,
@@ -38,7 +46,11 @@ import { AlertDialogComponent } from './alert-dialog/alert-dialog.component';
     MatIconModule,
     MatTooltipModule,
     MatCardModule,
-    MatDialogModule
+    MatDialogModule,
+    MatPaginatorModule,
+    MatSortModule,
+    MatTableModule,
+    MatRadioModule
   ]
 })
 export class CommonModuleModule { }
