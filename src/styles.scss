@@ -383,7 +383,8 @@ form {
   display: flex;
   align-items: center;
   text-transform: capitalize;
-  width: 100%;
+  //width: 100%;  //FCM
+  width: auto;
   padding: 0.5rem 0;
   // padding: 0.3rem 0;
   border-bottom: 0.0625rem solid #e9ecef;

@@ -1,0 +1,66 @@
+<style>
+    mat-radio-group {
+        position: static;
+        margin-top: 20px;
+    }
+
+    @media only screen and (max-width: 600px) {
+        .mat-form-field {
+            min-width: 100% !important;
+        }
+
+        .page-header-editor {
+            display: flex !important;
+        }
+    }
+</style>
+
+<section *ngIf="productCategoryForm" class="container px-2">
+    <div class="page-header-editor">
+        <div class="page-header-title">
+            <div class="d-block">
+                <h4 class="mb-0">
+                    {{ f['uid'].value ? "Update Product Category" : "Create Product Category" }}
+                </h4>
+            </div>
+        </div>
+        <button type="button" mat-icon-button [routerLink]="['/masters/productCategory']">
+            <mat-icon>close</mat-icon>
+        </button>
+    </div>
+
+    <div style="height: 80vh;" class="card mat-elevation-z3 border-0 mt-3">
+        <div class="card-body">
+            <form [formGroup]="productCategoryForm">
+                <div class="card mat-elevation-z3 border-0 my-3">
+                    <div class="card-body">
+                        <div class="row">
+                            <mat-form-field class="col-6">
+                                <input type="text" matInput placeholder="Name" formControlName="name" trim="blur"
+                                    maxlength="100" autocomplete="off" required />
+                                <mat-error> <a style="color:black; margin-left: 5px;">Invalid Input. Acceptable Range
+                                        [A-Za-z ]</a></mat-error>
+                            </mat-form-field>
+                            <div class="col-6">
+                                <mat-radio-group formControlName="status" aria-label="Select an option" class="d-block">
+
+                                    <mat-radio-button value="InActive">Inactive</mat-radio-button>
+                                    <mat-radio-button value="Active">Active</mat-radio-button>
+                                </mat-radio-group>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+            <footer style="margin-top: 20px;" class="mat-stepper-footer ng-star-inserted">
+                <button mat-raised-button color="primary" type="submit" (click)="submitForm()"
+                    [disabled]="!productCategoryForm.valid">
+                    {{ productCategoryForm.value.uid ? "Update" : "Create" }}
+                </button>
+                <button mat-stroked-button class="ml-1" color="primary" [routerLink]="['/masters/productCategory']">
+                    Cancel
+                </button>
+            </footer>
+        </div>
+    </div>
+</section>

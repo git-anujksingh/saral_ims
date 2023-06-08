@@ -1,0 +1,7 @@
+.ec2{
+    position: absolute;
+    bottom: 0;
+    display: flex;
+    justify-content: right;
+    width: 100%;
+}

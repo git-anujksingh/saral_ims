@@ -1,0 +1,74 @@
+<div class="page-header-editor">
+    <div class="page-header-title">
+        <div class="d-block">
+            <h4 class="mb-0">
+                Product Category
+            </h4>
+        </div>
+    </div>
+    <button type="button" style="margin-right: 8px" mat-raised-button color="primary" (click)="goToCreate()">
+        Create
+    </button>
+</div>
+
+<div class="example-container mat-elevation-z1">
+    <div class="example-table-container">
+        <div class="table-responsive">
+            <table mat-table [dataSource]="dataSource" class="table-hover" cdkDropList
+                cdkDropListOrientation="horizontal" matSort matSortActive="updatedDate" matSortDisableClear
+                matSortDirection="desc">
+
+                <ng-container matColumnDef="referenceId">
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header style="color:#002759;">
+                        Reference ID
+                    </th>
+                    <td mat-cell *matCellDef="let row" data-label="Reference ID">{{ row.referenceId }}</td>
+                </ng-container>
+
+                <ng-container matColumnDef="name">
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header style="color:#002759;">
+                        Name
+                    </th>
+                    <td mat-cell *matCellDef="let row" data-label="Name">{{ row.name }}</td>
+                </ng-container>
+
+                <ng-container matColumnDef="updatedDate">
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header style="color:#002759;">
+                        Modified Date
+                    </th>
+                    <td mat-cell *matCellDef="let row" data-label="Modified Date">{{ row.updatedDate | date }}</td>
+                </ng-container>
+
+                <ng-container matColumnDef="StatusFlag">
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header style="color:#002759;">
+                        Active/InActive
+                    </th>
+                    <td mat-cell *matCellDef="let row" data-label="Active/InActive">{{ row.status }}</td>
+                </ng-container>
+
+                <ng-container matColumnDef="action">
+                    <th mat-header-cell *matHeaderCellDef cdkDrag style="color:#002759;">
+                        Actions
+                    </th>
+                    <td mat-cell *matCellDef="let element" data-label="Actions">
+                        <button mat-icon-button aria-label="Button for edit" (click)="goToEditPage(element.uid)"
+                            matTooltip="Edit Product Category">
+                            <mat-icon>edit</mat-icon>
+                        </button>
+                        <button mat-icon-button aria-label="Button for Detail" (click)="goToDetailsPage(element.uid)"
+                            matTooltip="View Details">
+                            <mat-icon>details</mat-icon>
+                        </button>
+                    </td>
+                </ng-container>
+
+                <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></tr>
+                <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+            </table>
+        </div>
+    </div>
+</div>
+
+<div class="ec2">
+    <mat-paginator [length]="resultsLength" [pageSize]="100" [pageSizeOptions]="[1, 20, 50, 100, 200]"></mat-paginator>
+</div>

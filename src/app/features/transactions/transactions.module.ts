@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 import { TransactionsRoutingModule } from './transactions-routing.module';
-import { TransactionsComponent } from './masters.component';
+import { TransactionsComponent } from './transactions.component';
 
 
 @NgModule({
